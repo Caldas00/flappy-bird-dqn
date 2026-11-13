@@ -1,0 +1,12 @@
+# Trained models and checkpoints
+models/
+*.pth
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# macOS
+.DS_Store
