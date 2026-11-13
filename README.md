@@ -2,7 +2,7 @@
 
 A small, self-made Flappy Bird game written in [pygame](https://www.pygame.org/), wrapped as a Gym-style environment, plus a Deep Q-Network agent that learns to play it from scratch.
 
-The whole project is three Python files: a game/environment, an agent, and a training script. There are no pretrained models in this repo — you train your own.
+The whole project is three Python files: a game/environment, an agent, and a training script.
 
 ## What's in the repo
 
@@ -25,7 +25,7 @@ state = env.reset()                 # -> np.array of 6 floats
 state, reward, done = env.step(a)   # a = 0 (do nothing) or 1 (flap)
 ```
 
-It is Gym-*style* (`reset()` / `step()`), but it is not a `gymnasium.Env` subclass, and `step` returns `(state, reward, done)` instead of Gymnasium's 5-tuple. Wrapping it in a real `gymnasium.Env` would be a small change.
+It is Gym-*style* (`reset()` / `step()`), but it is not a `gymnasium.Env` subclass, and `step` returns `(state, reward, done)` instead of Gymnasium's 5-tuple.
 
 **Game:** a 400×600 window with a bird at a fixed x position and one pipe pair at a time. Gravity pulls the bird down every frame; a flap sets its vertical velocity to a fixed upward value. The bird has a radius, so collisions with the pipes, the ceiling and the ground are checked against its body, not a single point. An episode ends on any collision.
 
@@ -72,9 +72,6 @@ Learning starts once the buffer holds 1000 transitions, and one gradient step is
 Tested with Python 3.13. (pygame's font module did not work for me on Python 3.14, so use 3.13 if you hit that.)
 
 ```bash
-git clone git@github.com:Caldas00/flappy-bird-dqn.git
-cd flappy-bird-dqn
-
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
@@ -104,7 +101,7 @@ While a window is open:
 
 ### What gets saved
 
-Everything goes in `models/` (created automatically, and ignored by git):
+Everything goes in `models/` (created automatically):
 
 - **Auto-save every 300 episodes:** a timestamped `.pth` checkpoint plus a `_stats.txt` summary (mean/max reward and episode length over the last 1000 episodes, training steps, recent loss).
 - **Final save:** at the end it asks for a filename (Enter accepts an automatic one).
