@@ -113,6 +113,4 @@ Each checkpoint stores the online and target networks, optimiser, scheduler, ste
 
 ## Notes
 
-- There is no separate "play only" script. To watch a trained model, load its checkpoint in *Visual* mode; note that this keeps training while it plays.
-- Rewards, physics and pipe settings are plain attributes at the top of `FlappyBirdEnv.__init__`, and the agent hyper-parameters are the defaults of `Agent.__init__` — they are the first things to tweak.
 - Training with a GPU is picked up automatically if CUDA is available, but this network is small and runs fine on CPU.
